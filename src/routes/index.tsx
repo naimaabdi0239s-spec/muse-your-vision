@@ -318,7 +318,6 @@ function Index() {
   p-6
   transition-transform
   duration-500
-  group-hover:scale-100
 "
           />
 
