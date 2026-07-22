@@ -241,72 +241,129 @@ function Index() {
           A complete digital refresh for Tech Support For Everyone, creating a modern online presence that better reflects their brand, showcases their services, and makes connecting with customers effortless.
         </p>
         {beforeImage && afterImage && (
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <img
-                src={beforeImage.src}
-                alt={beforeImage.alt}
-                loading="lazy"
-                width={1600}
-                height={1200}
-                className="w-full h-[380px] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-[#f8f2ea] p-4"
-              />
-              <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">Before</p>
-            </div>
-            <div>
-              <img
-                src={afterImage.src}
-                alt={afterImage.alt}
-                loading="lazy"
-                width={1600}
-                height={1200}
-                className="w-full h-[380px] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-[#f8f2ea] p-4"
-              />
-              <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">After</p>
-            </div>
+  <div className="grid md:grid-cols-2 gap-6">
+
+    <div>
+      <div className="bg-cream rounded-lg p-4 border border-[color:var(--maroon)]/20">
+        <img
+          src={beforeImage.src}
+          alt={beforeImage.alt}
+          loading="lazy"
+          width={1600}
+          height={1200}
+          className="w-full aspect-[4/3] object-contain rounded-md"
+        />
+      </div>
+
+      <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">
+        Before
+      </p>
+    </div>
+
+
+    <div>
+      <div className="bg-cream rounded-lg p-4 border border-[color:var(--maroon)]/20">
+        <img
+          src={afterImage.src}
+          alt={afterImage.alt}
+          loading="lazy"
+          width={1600}
+          height={1200}
+          className="w-full aspect-[4/3] object-contain rounded-md"
+        />
+      </div>
+
+      <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">
+        After
+      </p>
+    </div>
+
+  </div>
+)}
           </div>
         )}
       </section>
 
-      {/* EXPLORE WORK */}
-      <section id="work" className="mx-auto max-w-6xl px-6 py-14">
-        <h2 className="font-serif text-4xl md:text-5xl mb-10">Explore our work</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {caseStudies.map((w) => (
-            <div
-              key={w.slug}
-              className="group bg-beige rounded-xl overflow-hidden flex flex-col"
-            >
-              <div className="aspect-[4/5] overflow-hidden bg-cream">
-                <img
-                 src={w.cover}
-                  alt={`${w.title} website preview`}
-                  loading="lazy"
-                  width={1200}
-                  height={1500}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-6 flex items-start justify-between gap-4">
-                <div>
-                  <span className="maroon-tag mb-3">{w.tag}</span>
-                  <h3 className="font-serif text-xl mt-3">{w.title}</h3>
-                </div>
-              </div>
-              <div className="px-6 pb-6">
-                <a
-                  href={w.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-maroon hover:underline underline-offset-4 inline-flex items-center gap-2"
-                >
-                  View live project <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </div>
-          ))}
+     
+     {/* EXPLORE WORK */}
+<section id="work" className="mx-auto max-w-6xl px-6 py-14">
+
+  <h2 className="font-serif text-4xl md:text-5xl mb-10">
+    Explore our work
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    {caseStudies.map((w) => (
+      <div
+        key={w.slug}
+        className="group bg-beige rounded-xl overflow-hidden flex flex-col"
+      >
+
+        {/* Website Preview */}
+        <div className="aspect-[4/3] overflow-hidden bg-cream p-5 flex items-center justify-center">
+
+          <img
+            src={w.cover}
+            alt={`${w.title} website preview`}
+            loading="lazy"
+            width={1200}
+            height={1500}
+            className="
+              w-full
+              h-full
+              object-contain
+              object-top
+              rounded-lg
+              group-hover:scale-105
+              transition-transform
+              duration-500
+            "
+          />
+
         </div>
-      </section>
+
+
+        {/* Project Info */}
+        <div className="p-6 flex items-start justify-between gap-4">
+
+          <div>
+
+            <span className="maroon-tag mb-3">
+              {w.tag}
+            </span>
+
+            <h3 className="font-serif text-xl mt-3">
+              {w.title}
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        {/* Link */}
+        <div className="px-6 pb-6">
+
+          <a
+            href={w.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-maroon hover:underline underline-offset-4 inline-flex items-center gap-2"
+          >
+            View live project
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+
+        </div>
+
+
+      </div>
+    ))}
+
+  </div>
+
+</section>
 
       {/* ABOUT */}
       <section id="about" className="mx-auto max-w-6xl px-6 py-8 grid md:grid-cols-2 gap-8 items-center">
