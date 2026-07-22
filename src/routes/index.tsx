@@ -240,50 +240,42 @@ function Index() {
         <p className="max-w-2xl text-coffee/80 mb-10 leading-relaxed">
           A complete digital refresh for Tech Support For Everyone, creating a modern online presence that better reflects their brand, showcases their services, and makes connecting with customers effortless.
         </p>
-        {beforeImage && afterImage && (
-  <div className="grid md:grid-cols-2 gap-6">
+                {beforeImage && afterImage && (
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <img
+                src={beforeImage.src}
+                alt={beforeImage.alt}
+                loading="lazy"
+                width={1600}
+                height={1200}
+                className="w-full aspect-[4/3] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-beige"
+              />
+              <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">
+                Before
+              </p>
+            </div>
 
-    <div>
-      <div className="bg-cream rounded-lg p-4 border border-[color:var(--maroon)]/20">
-        <img
-          src={beforeImage.src}
-          alt={beforeImage.alt}
-          loading="lazy"
-          width={1600}
-          height={1200}
-       className="w-full h-[520px] object-contain object-top rounded-md p-6 bg-white"
-        />
-      </div>
-
-      <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">
-        Before
-      </p>
-    </div>
-
-
-    <div>
-      <div className="bg-cream rounded-lg p-4 border border-[color:var(--maroon)]/20">
-        <img
-          src={afterImage.src}
-          alt={afterImage.alt}
-          loading="lazy"
-          width={1600}
-          height={1200}
-          className="w-full h-[520px] object-contain object-top rounded-md p-6 bg-white"
-        />
-      </div>
-
-      <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">
-        After
-      </p>
-    </div>
-
-  </div>
-)}
+            <div>
+              <img
+                src={afterImage.src}
+                alt={afterImage.alt}
+                loading="lazy"
+                width={1600}
+                height={1200}
+                className="w-full aspect-[4/3] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-beige"
+              />
+              <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">
+                After
+              </p>
+            </div>
           </div>
         )}
       </section>
 
+
+      {/* EXPLORE WORK */}
+      <section id="work" className="mx-auto max-w-6xl px-6 py-14">
      
      {/* EXPLORE WORK */}
 <section id="work" className="mx-auto max-w-6xl px-6 py-14">
