@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import aboutImg from "@/assets/aboutus.jpg.asset.json";
 import { caseStudies } from "@/lib/work";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const QUESTIONNAIRE_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeRcec-Gcn2ZdkDfO6dTEtdjNN54-_ePwjadFpEeZJGQE8Fvw/viewform?usp=publish-editor";
@@ -250,12 +249,30 @@ function Index() {
           A complete digital refresh for Tech Support For Everyone, creating a modern online presence that better reflects their brand, showcases their services, and makes connecting with customers effortless.
         </p>
         {beforeImage && afterImage && (
-          <BeforeAfterSlider
-            beforeSrc={beforeImage.src}
-            beforeAlt={beforeImage.alt}
-            afterSrc={afterImage.src}
-            afterAlt={afterImage.alt}
-          />
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <img
+                src={beforeImage.src}
+                alt={beforeImage.alt}
+                loading="lazy"
+                width={1600}
+                height={1200}
+                className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
+              />
+              <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">Before</p>
+            </div>
+            <div>
+              <img
+                src={afterImage.src}
+                alt={afterImage.alt}
+                loading="lazy"
+                width={1600}
+                height={1200}
+                className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
+              />
+              <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">After</p>
+            </div>
+          </div>
         )}
       </section>
 
@@ -319,13 +336,13 @@ function Index() {
           </a>
         </div>
         <div className="flex justify-center md:justify-start">
-          <div className="w-full max-w-sm aspect-square rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
+          <div className="w-full max-w-lg aspect-square rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
             <img
               src={aboutImg.url}
               alt="Designer reviewing brand work on a phone beside an iMac showing a color-system layout"
               loading="lazy"
-              width={900}
-              height={900}
+              width={1200}
+              height={1200}
               className="w-full h-full object-cover"
             />
           </div>
@@ -382,6 +399,9 @@ function Index() {
       </section>
 
       {/* DUAL CTA */}
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="border-t border-[color:var(--maroon)]/20" />
+      </div>
       <section id="contact" className="mx-auto max-w-6xl px-6 py-14 grid md:grid-cols-2 gap-6">
         <div
           className="rounded-xl p-10 border-l-4 flex flex-col justify-between"
