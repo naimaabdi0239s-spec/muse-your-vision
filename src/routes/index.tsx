@@ -309,16 +309,17 @@ function Index() {
             loading="lazy"
             width={1200}
             height={1500}
-            className="
-              w-full
-              h-full
-              object-contain
-              object-top
-              rounded-lg
-              group-hover:scale-105
-              transition-transform
-              duration-500
-            "
+           className="
+  w-full
+  h-full
+  object-contain
+  object-top
+  rounded-lg
+  p-6
+  transition-transform
+  duration-500
+  group-hover:scale-100
+"
           />
 
         </div>
