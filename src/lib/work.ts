@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
       "Tech Support For Everyone needed a site that felt as approachable as their in-home help. We rebuilt the brand's presence with clearer messaging, a warmer visual language, and a booking flow that gets people from question to appointment in a few taps.",
     gallery: [
       {
-        src: "/before2.png",
+        src: "/tsfe-before-1.png",
         alt: "Tech Support For Everyone — original hero, red on dark blue",
         label: "Before",
       },
