@@ -330,7 +330,7 @@ function Index() {
         <div className="flex justify-center md:justify-start">
           <div className="w-full max-w-lg aspect-square rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
             <img
-              src={aboutImg.url}
+              src="/aboutus.jpg"
               alt="Designer reviewing brand work on a phone beside an iMac showing a color-system layout"
               loading="lazy"
               width={1200}
