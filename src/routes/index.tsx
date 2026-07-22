@@ -195,11 +195,7 @@ function Index() {
 >
   <source src="/hero%20(2).mp4" type="video/mp4" />
 </video>
-            <div className="absolute inset-0 flex items-center justify-center bg-beige/70 text-coffee/70 text-sm text-center px-6 pointer-events-none">
-              <span className="inline-flex items-center gap-2">
-                <Play className="w-4 h-4" /> Your hero video will play here
-              </span>
-            </div>
+           
           </div>
         </div>
       </section>
