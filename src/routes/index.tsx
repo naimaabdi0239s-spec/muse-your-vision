@@ -251,7 +251,7 @@ function Index() {
           loading="lazy"
           width={1600}
           height={1200}
-          className="w-full aspect-[4/3] object-contain rounded-md"
+       className="w-full h-[520px] object-contain object-top rounded-md p-6 bg-white"
         />
       </div>
 
@@ -269,7 +269,7 @@ function Index() {
           loading="lazy"
           width={1600}
           height={1200}
-          className="w-full aspect-[4/3] object-contain rounded-md"
+          className="w-full h-[520px] object-contain object-top rounded-md p-6 bg-white"
         />
       </div>
 
