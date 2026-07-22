@@ -186,19 +186,15 @@ function Index() {
         <div className="justify-self-end w-full max-w-sm">
           <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-beige border border-[color:var(--maroon)]/30">
             <video
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Muse studio in motion — placeholder video"
-              onPlay={() => track("hero_video_play")}
-              width={800}
-              height={1000}
-            >
-              Your browser does not support embedded video.
-            </video>
+  className="w-full h-full object-cover"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+>
+  <source src="/hero%20(2).mp4" type="video/mp4" />
+</video>
             <div className="absolute inset-0 flex items-center justify-center bg-beige/70 text-coffee/70 text-sm text-center px-6 pointer-events-none">
               <span className="inline-flex items-center gap-2">
                 <Play className="w-4 h-4" /> Your hero video will play here
