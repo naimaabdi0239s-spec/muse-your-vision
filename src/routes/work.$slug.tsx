@@ -74,7 +74,7 @@ function CaseStudyPage() {
         </div>
 
         <div className="mt-12 grid md:grid-cols-2 gap-6">
-          {project.gallery.map((img, i) => (
+          {project.gallery.map((img: (typeof project.gallery)[number], i: number) => (
             <figure key={i}>
               {img.label && <span className="maroon-tag mb-3">{img.label}</span>}
               <img
