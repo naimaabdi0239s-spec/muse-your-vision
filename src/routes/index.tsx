@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import aboutImg from "@/assets/aboutus.jpg.asset.json";
 import { caseStudies } from "@/lib/work";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const QUESTIONNAIRE_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeRcec-Gcn2ZdkDfO6dTEtdjNN54-_ePwjadFpEeZJGQE8Fvw/viewform?usp=publish-editor";
@@ -114,7 +115,6 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      // Search Console / Bing Webmaster verification — replace with real tokens.
       { name: "google-site-verification", content: "REPLACE_WITH_GOOGLE_TOKEN" },
       { name: "msvalidate.01", content: "REPLACE_WITH_BING_TOKEN" },
     ],
@@ -127,6 +127,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const beforeImage = featured.gallery.find((g) => g.label === "Before");
+  const afterImage = featured.gallery.find((g) => g.label === "After");
+
   return (
     <div className="min-h-screen bg-cream text-coffee">
       {/* NAV */}
@@ -183,7 +186,6 @@ function Index() {
         </div>
         <div className="justify-self-end w-full max-w-sm">
           <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-beige border border-[color:var(--maroon)]/30">
-            {/* Hero video placeholder — replace `poster` and add a <source src="/hero.mp4"> below when your video is ready. */}
             <video
               className="w-full h-full object-cover"
               autoPlay
@@ -196,7 +198,6 @@ function Index() {
               width={800}
               height={1000}
             >
-              {/* <source src="/hero.mp4" type="video/mp4" /> */}
               Your browser does not support embedded video.
             </video>
             <div className="absolute inset-0 flex items-center justify-center bg-beige/70 text-coffee/70 text-sm text-center px-6 pointer-events-none">
@@ -248,49 +249,14 @@ function Index() {
         <p className="max-w-2xl text-coffee/80 mb-10 leading-relaxed">
           A complete digital refresh for Tech Support For Everyone, creating a modern online presence that better reflects their brand, showcases their services, and makes connecting with customers effortless.
         </p>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <span className="maroon-tag mb-4">Before</span>
-            <div className="mt-4 grid gap-4">
-              {featured.gallery.filter((g) => g.label === "Before").map((g, i) => (
-                <img
-                  key={i}
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  width={1600}
-                  height={1000}
-                  className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
-                />
-              ))}
-            </div>
-          </div>
-          <div>
-            <span className="maroon-tag mb-4">After</span>
-            <div className="mt-4 grid gap-4">
-              {featured.gallery.filter((g) => g.label === "After").map((g, i) => (
-                <img
-                  key={i}
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  width={1600}
-                  height={1000}
-                  className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="mt-8">
-          <Link
-            to="/work/$slug"
-            params={{ slug: featured.slug }}
-            className="text-sm text-maroon hover:underline underline-offset-4 inline-flex items-center gap-2"
-          >
-            Read the full case study <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+        {beforeImage && afterImage && (
+          <BeforeAfterSlider
+            beforeSrc={beforeImage.src}
+            beforeAlt={beforeImage.alt}
+            afterSrc={afterImage.src}
+            afterAlt={afterImage.alt}
+          />
+        )}
       </section>
 
       {/* EXPLORE WORK */}
@@ -298,12 +264,9 @@ function Index() {
         <h2 className="font-serif text-4xl md:text-5xl mb-10">Explore our work</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {caseStudies.map((w) => (
-            <Link
+            <div
               key={w.slug}
-              to="/work/$slug"
-              params={{ slug: w.slug }}
-              className="group bg-beige rounded-xl overflow-hidden border-l-4 flex flex-col"
-              style={{ borderLeftColor: "var(--maroon)" }}
+              className="group bg-beige rounded-xl overflow-hidden flex flex-col"
             >
               <div className="aspect-[4/5] overflow-hidden bg-cream">
                 <img
@@ -320,30 +283,49 @@ function Index() {
                   <span className="maroon-tag mb-3">{w.tag}</span>
                   <h3 className="font-serif text-xl mt-3">{w.title}</h3>
                 </div>
-                <ArrowUpRight className="w-5 h-5 text-maroon mt-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
-            </Link>
+              <div className="px-6 pb-6">
+                <a
+                  href={w.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-maroon hover:underline underline-offset-4 inline-flex items-center gap-2"
+                >
+                  View live project <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="mx-auto max-w-6xl px-6 py-14 grid md:grid-cols-2 gap-12 items-center">
+      <section id="about" className="mx-auto max-w-6xl px-6 py-8 grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <h2 className="font-serif text-4xl md:text-5xl mb-6">About Us</h2>
+          <h2 className="font-serif text-4xl md:text-5xl mb-4">About Us</h2>
           <p className="text-coffee/80 leading-relaxed max-w-md">
-            Muse is a one-woman studio built on the belief that every vision deserves to be brought to life with care. I work closely with you to create something that feels true to you and your brand.{" "}
-            <span className="muse-wordmark text-3xl align-middle ml-1">Your vision, my mission.</span>
+            Muse is a one-woman studio built on the belief that every vision deserves to be brought to life with care. I work closely with you to create something that feels true to you and your brand.
           </p>
+          <p className="muse-wordmark text-3xl mt-3 block">Your vision, my mission.</p>
+          <a
+            href={QUESTIONNAIRE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("cta_submit_your_vision")}
+            className="mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm text-cream transition-colors hover:opacity-90"
+            style={{ background: "var(--coffee)" }}
+          >
+            Submit your vision <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
-        <div className="ml-auto w-full max-w-xs">
-          <div className="aspect-[3/4] rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
+        <div className="flex justify-center md:justify-start">
+          <div className="w-full max-w-sm aspect-square rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
             <img
               src={aboutImg.url}
               alt="Designer reviewing brand work on a phone beside an iMac showing a color-system layout"
               loading="lazy"
               width={900}
-              height={1200}
+              height={900}
               className="w-full h-full object-cover"
             />
           </div>
@@ -367,11 +349,12 @@ function Index() {
       {/* TESTIMONIALS */}
       <section className="mx-auto max-w-6xl px-6 py-14">
         <h2 className="font-serif text-4xl md:text-5xl text-center mb-14">Client testimonials</h2>
-        <div className="grid md:grid-cols-3 gap-6 animate-fade-in-slow">
-          {testimonials.map((t) => (
+        <div className="grid md:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
             <figure
               key={t.name}
-              className="relative bg-beige rounded-2xl p-8 pt-10 shadow-sm border border-[color:var(--maroon)]/20"
+              className="relative bg-beige rounded-2xl p-8 pt-10 shadow-sm border border-[color:var(--maroon)]/20 animate-testimonial-slide"
+              style={{ animationDelay: `${i * 0.3}s` }}
             >
               <div className="absolute -top-4 left-6 bg-cream rounded-full p-2 border border-[color:var(--maroon)]/20">
                 <Quote className="w-4 h-4 text-maroon" />

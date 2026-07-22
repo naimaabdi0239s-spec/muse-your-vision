@@ -43,6 +43,7 @@
   --animate-fade-in: fade-in 0.3s ease-out;
   --animate-fade-in-slow: fade-in-slow 5s ease-out;
   --animate-slide-in-left: slide-in-left 0.9s ease-out;
+  --animate-testimonial-slide: testimonial-slide 5s ease-out both;
 
   @keyframes fade-in {
     0% { opacity: 0; transform: translateY(10px); }
@@ -54,6 +55,10 @@
   }
   @keyframes slide-in-left {
     0% { opacity: 0; transform: translateX(-40px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes testimonial-slide {
+    0% { opacity: 0; transform: translateX(-30px); }
     100% { opacity: 1; transform: translateX(0); }
   }
 }
