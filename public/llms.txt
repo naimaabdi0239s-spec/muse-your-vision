@@ -1,0 +1,10 @@
+# Muse
+
+A remote creative studio crafting editorial websites, brand identity, and custom digital experiences with warmth and intention.
+
+## Links
+
+- [Services](/#services): Website design & development, website refreshes, and logo & brand design.
+- [Work](/#work): Featured client and demo projects, each with its own case study under /work/.
+- [About](/#about): One-woman studio, working globally, 100% remote.
+- [Contact](/#contact): Instagram, Facebook, and email at hello@muse.studio.
