@@ -272,8 +272,8 @@ function Index() {
           </div>
         )}
       </section>
-     
-     {/* EXPLORE WORK */}
+  
+{/* EXPLORE WORK */}
 <section id="work" className="mx-auto max-w-6xl px-6 py-14">
 
   <h2 className="font-serif text-4xl md:text-5xl mb-10">
@@ -288,51 +288,35 @@ function Index() {
         className="group bg-beige rounded-xl overflow-hidden flex flex-col"
       >
 
-        {/* Website Preview */}
         <div className="aspect-[4/3] overflow-hidden bg-cream p-5 flex items-center justify-center">
-
           <img
             src={w.cover}
             alt={`${w.title} website preview`}
             loading="lazy"
             width={1200}
             height={1500}
-           className="
-  w-full
-  h-full
-  object-contain
-  object-top
-  rounded-lg
-  p-6
-  transition-transform
-  duration-500
-"
+            className="
+              w-full
+              h-full
+              object-contain
+              rounded-lg
+              transition-transform
+              duration-500
+            "
           />
-
         </div>
 
+        <div className="p-6">
+          <span className="maroon-tag mb-3">
+            {w.tag}
+          </span>
 
-        {/* Project Info */}
-        <div className="p-6 flex items-start justify-between gap-4">
-
-          <div>
-
-            <span className="maroon-tag mb-3">
-              {w.tag}
-            </span>
-
-            <h3 className="font-serif text-xl mt-3">
-              {w.title}
-            </h3>
-
-          </div>
-
+          <h3 className="font-serif text-xl mt-3">
+            {w.title}
+          </h3>
         </div>
 
-
-        {/* Link */}
         <div className="px-6 pb-6">
-
           <a
             href={w.liveUrl}
             target="_blank"
@@ -342,9 +326,7 @@ function Index() {
             View live project
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
-
         </div>
-
 
       </div>
     ))}
