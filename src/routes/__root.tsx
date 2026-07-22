@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -91,6 +92,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Italianno&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap",
       },
     ],
+    scripts: [
+      // Analytics placeholder — swap data-domain and src for your Plausible/Fathom account.
+      {
+        defer: true,
+        "data-domain": "muse.studio",
+        src: "https://plausible.io/js/script.tagged-events.outbound-links.js",
+      },
+      {
+        children:
+          "window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};",
+      },
+    ],
+
   }),
   shellComponent: RootShell,
   component: RootComponent,
