@@ -1,9 +1,3 @@
-import projectTsfeLive from "@/assets/project-tsfe-live.png.asset.json";
-import projectJana from "@/assets/project-jana.png.asset.json";
-import projectMedi from "@/assets/project-medi.png.asset.json";
-import tsfeAfter1 from "@/assets/tsfe-after-1.png.asset.json";
-import tsfeBefore1 from "@/assets/tsfe-before-1.png.asset.json";
-
 export type CaseStudy = {
   slug: string;
   tag: string;
@@ -20,7 +14,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "tech-support-for-everyone",
     tag: "Client Work",
     title: "Tech Support For Everyone",
-    cover: projectTsfeLive.url,
+    cover: "/project-tsfe-live.png",
     liveUrl: "https://techsupportforeveryone.com/",
     summary:
       "A full digital refresh — a modern, human site that finally matches the service behind it.",
@@ -28,12 +22,12 @@ export const caseStudies: CaseStudy[] = [
       "Tech Support For Everyone needed a site that felt as approachable as their in-home help. We rebuilt the brand's presence with clearer messaging, a warmer visual language, and a booking flow that gets people from question to appointment in a few taps.",
     gallery: [
       {
-        src: tsfeBefore1.url,
+        src: "/before2.png",
         alt: "Tech Support For Everyone — original hero, red on dark blue",
         label: "Before",
       },
       {
-        src: tsfeAfter1.url,
+        src: "/after2.png",
         alt: "Redesigned Tech Support For Everyone hero with friendly photography",
         label: "After",
       },
@@ -43,7 +37,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "jana",
     tag: "Demo Project",
     title: "Jańa",
-    cover: projectJana.url,
+    cover: "/project-jana.png",
     liveUrl: "https://jana-parisian-elegance.lovable.app/",
     summary:
       "A candlelit corner of Paris — buttery pastries by day, velvet-dark jazz by night.",
@@ -51,7 +45,7 @@ export const caseStudies: CaseStudy[] = [
       "Jańa is an editorial demo built to show how a hospitality brand can feel timeless without feeling stiff. Deep burgundy, a hand-drawn wordmark, and quiet interior photography combine into a site that reads like the menu.",
     gallery: [
       {
-        src: projectJana.url,
+        src: "/project-jana.png",
         alt: "Jańa homepage hero with elegant script wordmark on a burgundy background",
       },
     ],
@@ -60,7 +54,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "medi-estate",
     tag: "Demo Project",
     title: "Medi Estate",
-    cover: projectMedi.url,
+    cover: "/project-medi.png",
     liveUrl: "https://medi-estate.lovable.app",
     summary:
       "Where the Mediterranean meets the Gulf — a real-estate concept for beachfront villas across the UAE.",
@@ -68,7 +62,7 @@ export const caseStudies: CaseStudy[] = [
       "Medi Estate is a demo for a modern real-estate brand. We paired oceanfront imagery with a serif display face and quiet UI so the listings do the talking.",
     gallery: [
       {
-        src: projectMedi.url,
+        src: "/project-medi.png",
         alt: "Medi Estate homepage with a beachfront villa at golden hour",
       },
     ],
