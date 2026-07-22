@@ -249,7 +249,7 @@ function Index() {
                 loading="lazy"
                 width={1600}
                 height={1200}
-                className="w-full h-[420px] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-[#f8f2ea] p-4"
+                className="w-full h-[380px] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-[#f8f2ea] p-4"
               />
               <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">Before</p>
             </div>
@@ -260,7 +260,7 @@ function Index() {
                 loading="lazy"
                 width={1600}
                 height={1200}
-                className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
+                className="w-full h-[380px] object-contain rounded-lg border border-[color:var(--maroon)]/20 bg-[#f8f2ea] p-4"
               />
               <p className="mt-3 text-xs uppercase tracking-widest text-[color:var(--maroon)] font-medium text-center">After</p>
             </div>
