@@ -272,10 +272,6 @@ function Index() {
           </div>
         )}
       </section>
-
-
-      {/* EXPLORE WORK */}
-      <section id="work" className="mx-auto max-w-6xl px-6 py-14">
      
      {/* EXPLORE WORK */}
 <section id="work" className="mx-auto max-w-6xl px-6 py-14">
