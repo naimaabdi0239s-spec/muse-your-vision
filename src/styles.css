@@ -116,8 +116,8 @@
   font-family: var(--font-script);
   color: var(--maroon);
   display: inline-block;
-  transform: rotate(-3deg);
 }
+
 
 @utility maroon-tag {
   display: inline-flex;

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -6,18 +6,95 @@ import {
   Facebook,
   Mail,
   Quote,
+  Play,
 } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
-import aboutImg from "@/assets/about.jpg";
-import tsfe1 from "@/assets/project-tsfe-1.jpg";
-import tsfe2 from "@/assets/project-tsfe-2.jpg";
-import tsfeBefore1 from "@/assets/project-tsfe-before-1.jpg";
-import tsfeBefore2 from "@/assets/project-tsfe-before-2.jpg";
-import projectJana from "@/assets/project-jana.jpg";
-import projectMedi from "@/assets/project-medi.jpg";
-import avatarTobias from "@/assets/avatar-tobias.jpg";
-import avatarKeith from "@/assets/avatar-keith.jpg";
-import avatarMona from "@/assets/avatar-mona.jpg";
+import aboutImg from "@/assets/aboutus.jpg.asset.json";
+import { caseStudies } from "@/lib/work";
+
+const QUESTIONNAIRE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeRcec-Gcn2ZdkDfO6dTEtdjNN54-_ePwjadFpEeZJGQE8Fvw/viewform?usp=publish-editor";
+
+const services = [
+  {
+    title: "Website Design & Development",
+    body: "Custom-built sites that read like a magazine and run like a machine, designed and coded end-to-end.",
+  },
+  {
+    title: "Website Refresh",
+    body: "For brands whose site no longer matches how far they've come. New life, same story, sharper.",
+  },
+  {
+    title: "Logo & Brand Design",
+    body: "Wordmarks, palettes, and identity systems with a warm, editorial, considered feel.",
+  },
+];
+
+const steps = [
+  { n: "01", title: "Tell Us Your Vision", body: "Share your idea, your brand, and where you'd like to go. Every detail matters." },
+  { n: "02", title: "Let's Talk", body: "A conversation to align on tone, scope, and the feeling your project should carry." },
+  { n: "03", title: "We Create", body: "Design and build, hand in hand. Considered, editorial, and made just for you." },
+  { n: "04", title: "You Launch", body: "We hand over the finished piece and support you as it steps into the world." },
+];
+
+const testimonials = [
+  {
+    name: "Tobias",
+    role: "Tech Support For Everyone",
+    quote:
+      "Amazing all around. Very quick to respond to requests and coordinate with me, very accurate interpretation of my wants, clearly a result of thorough planning. Very receptive to my major and minor changes, and delivered an amazing final product. Would work with again!",
+    rating: 5,
+  },
+  {
+    name: "Keith",
+    role: "Freelance client",
+    quote:
+      "Truly amazing work! Built me a website straight out of my vision and had it running within 2 days. Definitely would recommend.",
+    rating: 5,
+  },
+  {
+    name: "Mona",
+    role: "Former client",
+    quote:
+      "Working with Muse was such a great experience. They really took the time to understand what I wanted and brought my vision to life better than I imagined. The website looks amazing, feels professional, and makes my business look so much more put together. I couldn't be happier with how it turned out.",
+    rating: 5,
+  },
+];
+
+const featured = caseStudies[0];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "#muse",
+      name: "Muse",
+      description:
+        "A remote creative studio crafting editorial websites, brand identity, and custom digital experiences.",
+      url: "/",
+      areaServed: "Worldwide",
+      sameAs: ["https://instagram.com/", "https://facebook.com/"],
+      founder: { "@type": "Person", name: "Muse Founder" },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: testimonials.length.toString(),
+      },
+      review: testimonials.map((t) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: t.name },
+        reviewRating: { "@type": "Rating", ratingValue: t.rating.toString(), bestRating: "5" },
+        reviewBody: t.quote,
+      })),
+    },
+  ],
+};
+
+function track(event: string) {
+  if (typeof window !== "undefined" && typeof (window as unknown as { plausible?: (e: string) => void }).plausible === "function") {
+    (window as unknown as { plausible: (e: string) => void }).plausible(event);
+  }
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,63 +112,19 @@ export const Route = createFileRoute("/")({
           "A remote creative studio for websites, brand identity, and custom digital experiences.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
+      // Search Console / Bing Webmaster verification — replace with real tokens.
+      { name: "google-site-verification", content: "REPLACE_WITH_GOOGLE_TOKEN" },
+      { name: "msvalidate.01", content: "REPLACE_WITH_BING_TOKEN" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(jsonLd) },
     ],
   }),
   component: Index,
 });
-
-const services = [
-  {
-    title: "Website Design & Development",
-    body: "Custom-built sites that read like a magazine and run like a machine, designed and coded end-to-end.",
-  },
-  {
-    title: "Website Refresh",
-    body: "For brands whose site no longer matches how far they've come. New life, same story, sharper.",
-  },
-  {
-    title: "Logo & Brand Design",
-    body: "Wordmarks, palettes, and identity systems with a warm, editorial, considered feel.",
-  },
-];
-
-const works = [
-  { tag: "Client Work", title: "Tech Support For Everyone", img: tsfe2 },
-  { tag: "Demo Project", title: "Jańa", img: projectJana },
-  { tag: "Demo Project", title: "Medi Estate", img: projectMedi },
-];
-
-const steps = [
-  { n: "01", title: "Tell Us Your Vision", body: "Share your idea, your brand, and where you'd like to go. Every detail matters." },
-  { n: "02", title: "Let's Talk", body: "A conversation to align on tone, scope, and the feeling your project should carry." },
-  { n: "03", title: "We Create", body: "Design and build, hand in hand. Considered, editorial, and made just for you." },
-  { n: "04", title: "You Launch", body: "We hand over the finished piece and support you as it steps into the world." },
-];
-
-const testimonials = [
-  {
-    name: "Tobias",
-    role: "Tech Support For Everyone",
-    quote:
-      "Amazing all around. Very quick to respond to requests and coordinate with me, very accurate interpretation of my wants, clearly a result of thorough planning. Very receptive to my major and minor changes, and delivered an amazing final product. Would work with again!",
-    avatar: avatarTobias,
-  },
-  {
-    name: "Keith",
-    role: "Freelance client",
-    quote:
-      "Truly amazing work! Built me a website straight out of my vision and had it running within 2 days. Definitely would recommend.",
-    avatar: avatarKeith,
-  },
-  {
-    name: "Mona",
-    role: "Former client",
-    quote:
-      "Working with Muse was such a great experience. They really took the time to understand what I wanted and brought my vision to life better than I imagined. The website looks amazing, feels professional, and makes my business look so much more put together. I couldn't be happier with how it turned out.",
-    avatar: avatarMona,
-  },
-];
 
 function Index() {
   return (
@@ -99,10 +132,10 @@ function Index() {
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--cream)]/90 border-b border-[color:var(--maroon)]/15">
         <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
-          <a href="#" className="muse-wordmark text-5xl animate-slide-in-left leading-none pb-1">
+          <a href="#" className="muse-wordmark text-5xl animate-slide-in-left leading-none pb-1" aria-label="Muse — home">
             Muse
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-coffee">
+          <nav aria-label="Primary" className="hidden md:flex items-center gap-8 text-sm text-coffee">
             <a href="#work" className="hover:text-maroon transition-colors">Work</a>
             <a href="#services" className="hover:text-maroon transition-colors">Services</a>
             <a href="#about" className="hover:text-maroon transition-colors">About</a>
@@ -110,6 +143,7 @@ function Index() {
           </nav>
           <a
             href="#contact"
+            onClick={() => track("cta_start_your_vision")}
             className="rounded-full border border-coffee px-5 py-2 text-xs uppercase tracking-widest text-coffee hover:bg-coffee hover:text-cream transition-colors"
           >
             Start your vision
@@ -117,6 +151,7 @@ function Index() {
         </div>
       </header>
 
+      <main>
       {/* HERO */}
       <section className="mx-auto max-w-6xl px-6 pt-8 pb-16 grid md:grid-cols-2 gap-12 items-center">
         <div>
@@ -132,12 +167,14 @@ function Index() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#contact"
+              onClick={() => track("cta_lets_work_together")}
               className="rounded-full bg-coffee text-cream px-6 py-3 text-sm hover:bg-chocolate transition-colors inline-flex items-center gap-2"
             >
               Let's work together <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#work"
+              onClick={() => track("cta_view_our_work")}
               className="rounded-full border border-coffee text-coffee px-6 py-3 text-sm hover:bg-coffee hover:text-cream transition-colors"
             >
               View our work
@@ -145,23 +182,40 @@ function Index() {
           </div>
         </div>
         <div className="justify-self-end w-full max-w-sm">
-          <div className="rounded-2xl overflow-hidden aspect-[4/5] bg-beige border border-[color:var(--maroon)]/30">
-            <img src={heroImg} alt="Studio workspace" className="w-full h-full object-cover" width={800} height={1000} />
+          <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-beige border border-[color:var(--maroon)]/30">
+            {/* Hero video placeholder — replace `poster` and add a <source src="/hero.mp4"> below when your video is ready. */}
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Muse studio in motion — placeholder video"
+              onPlay={() => track("hero_video_play")}
+              width={800}
+              height={1000}
+            >
+              {/* <source src="/hero.mp4" type="video/mp4" /> */}
+              Your browser does not support embedded video.
+            </video>
+            <div className="absolute inset-0 flex items-center justify-center bg-beige/70 text-coffee/70 text-sm text-center px-6 pointer-events-none">
+              <span className="inline-flex items-center gap-2">
+                <Play className="w-4 h-4" /> Your hero video will play here
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* SERVICES */}
       <section id="services" className="mx-auto max-w-6xl px-6 py-14 animate-fade-in">
-        <div className="flex items-end justify-between mb-10">
-          <h2 className="font-serif text-4xl md:text-5xl">Services</h2>
-          <span className="handnote text-3xl">what we do</span>
-        </div>
+        <h2 className="font-serif text-4xl md:text-5xl mb-10">Services</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((s) => (
             <div
               key={s.title}
-              className="bg-beige rounded-xl p-8 border-l-4 border-l-maroon"
+              className="bg-beige rounded-xl p-8 border-l-4"
               style={{ borderLeftColor: "var(--maroon)" }}
             >
               <h3 className="font-serif text-2xl mb-3">{s.title}</h3>
@@ -181,9 +235,11 @@ function Index() {
       <section className="mx-auto max-w-6xl px-6 py-14">
         <p className="text-xs uppercase tracking-[0.24em] text-maroon mb-3">Featured project</p>
         <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-          <h2 className="font-serif text-4xl md:text-5xl">Tech Support For Everyone</h2>
+          <h2 className="font-serif text-4xl md:text-5xl">{featured.title}</h2>
           <a
-            href="#"
+            href={featured.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border border-maroon text-maroon px-5 py-2 text-xs uppercase tracking-widest hover:bg-maroon hover:text-cream transition-colors inline-flex items-center gap-2"
           >
             View live project <ArrowUpRight className="w-3.5 h-3.5" />
@@ -196,36 +252,68 @@ function Index() {
           <div>
             <span className="maroon-tag mb-4">Before</span>
             <div className="mt-4 grid gap-4">
-              <img src={tsfeBefore1} alt="Before 1" className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20" loading="lazy" />
-              <img src={tsfeBefore2} alt="Before 2" className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20" loading="lazy" />
+              {featured.gallery.filter((g) => g.label === "Before").map((g, i) => (
+                <img
+                  key={i}
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  width={1600}
+                  height={1000}
+                  className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
+                />
+              ))}
             </div>
           </div>
           <div>
             <span className="maroon-tag mb-4">After</span>
             <div className="mt-4 grid gap-4">
-              <img src={tsfe1} alt="After 1" className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20" loading="lazy" />
-              <img src={tsfe2} alt="After 2" className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20" loading="lazy" />
+              {featured.gallery.filter((g) => g.label === "After").map((g, i) => (
+                <img
+                  key={i}
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  width={1600}
+                  height={1000}
+                  className="w-full aspect-[4/3] object-cover rounded-lg border border-[color:var(--maroon)]/20"
+                />
+              ))}
             </div>
           </div>
+        </div>
+        <div className="mt-8">
+          <Link
+            to="/work/$slug"
+            params={{ slug: featured.slug }}
+            className="text-sm text-maroon hover:underline underline-offset-4 inline-flex items-center gap-2"
+          >
+            Read the full case study <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </section>
 
       {/* EXPLORE WORK */}
       <section id="work" className="mx-auto max-w-6xl px-6 py-14">
-        <div className="flex items-end justify-between mb-10">
-          <h2 className="font-serif text-4xl md:text-5xl">Explore our work</h2>
-          <span className="handnote text-3xl">a few favorites</span>
-        </div>
+        <h2 className="font-serif text-4xl md:text-5xl mb-10">Explore our work</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {works.map((w) => (
-            <a
-              key={w.title}
-              href="#"
+          {caseStudies.map((w) => (
+            <Link
+              key={w.slug}
+              to="/work/$slug"
+              params={{ slug: w.slug }}
               className="group bg-beige rounded-xl overflow-hidden border-l-4 flex flex-col"
               style={{ borderLeftColor: "var(--maroon)" }}
             >
-              <div className="aspect-[4/5] overflow-hidden">
-                <img src={w.img} alt={w.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div className="aspect-[4/5] overflow-hidden bg-cream">
+                <img
+                  src={w.cover}
+                  alt={`${w.title} website preview`}
+                  loading="lazy"
+                  width={1200}
+                  height={1500}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="p-6 flex items-start justify-between gap-4">
                 <div>
@@ -234,7 +322,7 @@ function Index() {
                 </div>
                 <ArrowUpRight className="w-5 h-5 text-maroon mt-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -244,13 +332,20 @@ function Index() {
         <div>
           <h2 className="font-serif text-4xl md:text-5xl mb-6">About Us</h2>
           <p className="text-coffee/80 leading-relaxed max-w-md">
-            Muse is a one-woman studio built on the belief that every vision deserves to be brought to life with care. I work closely with you to create something that feels true to you and your brand.
+            Muse is a one-woman studio built on the belief that every vision deserves to be brought to life with care. I work closely with you to create something that feels true to you and your brand.{" "}
+            <span className="muse-wordmark text-3xl align-middle ml-1">Your vision, my mission.</span>
           </p>
-          <p className="mt-4 handnote text-3xl">Your vision, my mission.</p>
         </div>
         <div className="ml-auto w-full max-w-xs">
-          <div className="aspect-square rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
-            <img src={aboutImg} alt="Founder at work" className="w-full h-full object-cover" loading="lazy" />
+          <div className="aspect-[3/4] rounded-xl overflow-hidden bg-beige border border-[color:var(--maroon)]/20">
+            <img
+              src={aboutImg.url}
+              alt="Designer reviewing brand work on a phone beside an iMac showing a color-system layout"
+              loading="lazy"
+              width={900}
+              height={1200}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -271,27 +366,24 @@ function Index() {
 
       {/* TESTIMONIALS */}
       <section className="mx-auto max-w-6xl px-6 py-14">
-        <h2 className="font-serif text-4xl md:text-5xl text-center mb-14">Kind words</h2>
+        <h2 className="font-serif text-4xl md:text-5xl text-center mb-14">Client testimonials</h2>
         <div className="grid md:grid-cols-3 gap-6 animate-fade-in-slow">
           {testimonials.map((t) => (
-            <div
+            <figure
               key={t.name}
               className="relative bg-beige rounded-2xl p-8 pt-10 shadow-sm border border-[color:var(--maroon)]/20"
             >
               <div className="absolute -top-4 left-6 bg-cream rounded-full p-2 border border-[color:var(--maroon)]/20">
                 <Quote className="w-4 h-4 text-maroon" />
               </div>
-              <p className="font-serif text-chocolate text-lg leading-snug italic">
+              <blockquote className="font-serif text-chocolate text-lg leading-snug italic">
                 "{t.quote}"
-              </p>
-              <div className="mt-6 flex items-center gap-3 pt-4 border-t border-[color:var(--maroon)]/15">
-                <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover" loading="lazy" />
-                <div>
-                  <p className="text-sm font-medium text-coffee">{t.name}</p>
-                  <p className="text-xs text-coffee/60">{t.role}</p>
-                </div>
-              </div>
-            </div>
+              </blockquote>
+              <figcaption className="mt-6 pt-4 border-t border-[color:var(--maroon)]/15">
+                <p className="text-sm font-medium text-coffee">{t.name}</p>
+                <p className="text-xs text-coffee/60">{t.role}</p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
@@ -319,7 +411,10 @@ function Index() {
             </p>
           </div>
           <a
-            href="#"
+            href={QUESTIONNAIRE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("cta_fill_questionnaire")}
             className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-widest"
             style={{ color: "var(--cream)" }}
           >
@@ -333,23 +428,40 @@ function Index() {
           <h3 className="font-serif text-3xl mb-6">Connect with us</h3>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href="#" className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors">
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track("contact_instagram_click")}
+                className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors"
+              >
                 <Instagram className="w-4 h-4" /> Instagram
               </a>
             </li>
             <li>
-              <a href="#" className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors">
+              <a
+                href="https://facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track("contact_facebook_click")}
+                className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors"
+              >
                 <Facebook className="w-4 h-4" /> Facebook
               </a>
             </li>
             <li>
-              <a href="mailto:hello@muse.studio" className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors">
+              <a
+                href="mailto:hello@muse.studio"
+                onClick={() => track("contact_email_click")}
+                className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors"
+              >
                 <Mail className="w-4 h-4" /> hello@muse.studio
               </a>
             </li>
           </ul>
         </div>
       </section>
+      </main>
 
       {/* FOOTER */}
       <footer className="mt-10" style={{ borderTop: "2px solid var(--maroon)" }}>
@@ -363,8 +475,8 @@ function Index() {
           <div className="md:text-right">
             <p className="text-xs uppercase tracking-[0.2em] text-maroon mb-3">Connect with us</p>
             <ul className="space-y-2 text-sm md:flex md:flex-col md:items-end">
-              <li><a href="#" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a></li>
-              <li><a href="#" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a></li>
+              <li><a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a></li>
+              <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a></li>
               <li><a href="mailto:hello@muse.studio" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Mail className="w-4 h-4" /> hello@muse.studio</a></li>
             </ul>
           </div>
