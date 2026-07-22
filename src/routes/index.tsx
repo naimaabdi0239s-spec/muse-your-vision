@@ -73,7 +73,7 @@ const jsonLd = {
         "A remote creative studio crafting editorial websites, brand identity, and custom digital experiences.",
       url: "/",
       areaServed: "Worldwide",
-      sameAs: ["https://instagram.com/", "https://facebook.com/"],
+      sameAs: ["https://www.instagram.com/musewebstudio/", "https://www.facebook.com/profile.php?id=61592306638218"],
       founder: { "@type": "Person", name: "Muse Founder" },
       aggregateRating: {
         "@type": "AggregateRating",
@@ -432,7 +432,7 @@ function Index() {
           <ul className="space-y-3 text-sm">
             <li>
               <a
-                href="https://instagram.com/"
+                href="https://www.instagram.com/musewebstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track("contact_instagram_click")}
@@ -443,7 +443,7 @@ function Index() {
             </li>
             <li>
               <a
-                href="https://facebook.com/"
+                href="https://www.facebook.com/profile.php?id=61592306638218"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track("contact_facebook_click")}
@@ -454,11 +454,11 @@ function Index() {
             </li>
             <li>
               <a
-                href="mailto:hello@muse.studio"
+                href="mailto:musewebsitestudio@gmail.com"
                 onClick={() => track("contact_email_click")}
                 className="inline-flex items-center gap-3 text-coffee hover:text-maroon transition-colors"
               >
-                <Mail className="w-4 h-4" /> hello@muse.studio
+                <Mail className="w-4 h-4" /> musewebsitestudio@gmail.com
               </a>
             </li>
           </ul>
@@ -478,9 +478,9 @@ function Index() {
           <div className="md:text-right">
             <p className="text-xs uppercase tracking-[0.2em] text-maroon mb-3">Connect with us</p>
             <ul className="space-y-2 text-sm md:flex md:flex-col md:items-end">
-              <li><a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a></li>
-              <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a></li>
-              <li><a href="mailto:hello@muse.studio" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Mail className="w-4 h-4" /> hello@muse.studio</a></li>
+              <li><a href="https://www.instagram.com/musewebstudio/" target="_blank" rel="noopener noreferrer" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=61592306638218" target="_blank" rel="noopener noreferrer" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a></li>
+              <li><a href="mailto:musewebsitestudio@gmail.com" className="hover:text-maroon transition-colors inline-flex items-center gap-2"><Mail className="w-4 h-4" /> musewebsitestudio@gmail.com</a></li>
             </ul>
           </div>
         </div>
