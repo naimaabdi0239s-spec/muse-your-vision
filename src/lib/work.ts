@@ -2,9 +2,7 @@ import projectTsfeLive from "@/assets/project-tsfe-live.png.asset.json";
 import projectJana from "@/assets/project-jana.png.asset.json";
 import projectMedi from "@/assets/project-medi.png.asset.json";
 import tsfeAfter1 from "@/assets/tsfe-after-1.png.asset.json";
-import tsfeAfter2 from "@/assets/tsfe-after-2.png.asset.json";
 import tsfeBefore1 from "@/assets/tsfe-before-1.png.asset.json";
-import tsfeBefore2 from "@/assets/tsfe-before-2.png.asset.json";
 
 export type CaseStudy = {
   slug: string;
@@ -30,9 +28,7 @@ export const caseStudies: CaseStudy[] = [
       "Tech Support For Everyone needed a site that felt as approachable as their in-home help. We rebuilt the brand's presence with clearer messaging, a warmer visual language, and a booking flow that gets people from question to appointment in a few taps.",
     gallery: [
       { src: tsfeBefore1.url, alt: "Tech Support For Everyone — original hero, red on dark blue", label: "Before" },
-      { src: tsfeBefore2.url, alt: "Tech Support For Everyone — original contact section", label: "Before" },
       { src: tsfeAfter1.url, alt: "Redesigned Tech Support For Everyone hero with friendly photography", label: "After" },
-      { src: tsfeAfter2.url, alt: "Redesigned Tech Support For Everyone pricing and availability section", label: "After" },
     ],
   },
   {
