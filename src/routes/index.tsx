@@ -287,7 +287,7 @@ function Index() {
             >
               <div className="aspect-[4/5] overflow-hidden bg-cream">
                 <img
-                  src={w.cover}
+                  src="/images/project-tsfe-live.png"
                   alt={`${w.title} website preview`}
                   loading="lazy"
                   width={1200}
