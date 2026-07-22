@@ -8,7 +8,7 @@ import {
   Quote,
   Play,
 } from "lucide-react";
-import aboutImg from "@/assets/aboutus.jpg.asset.json";
+
 import { caseStudies } from "@/lib/work";
 
 const QUESTIONNAIRE_URL =
